@@ -1,15 +1,17 @@
-#' Plot of Average mutation frequency of nucleotide mutations resulting in amino acid substitution
+#' Plot of average frequency of nucleotide mutations resulting in amino acid substitution
+#'
+#' The average frequency of nucleotide mutations resulting in amino acid substitution can be plotted as an aa_plot().
 #' @param data Results from the function aa_dist or aa_cdr3_dist.
 #' @param text The legend of the plot.
 #' @param legend.position The position of the legend. It can be "none","left", "right", "bottom", "top".
-#' @param characteristics is a data set data(Klassen) in this package
-#' @return Output is the plot of average mutation frequency of nucleotide mutations resulting in amino acid substitution. The classes are divided according to IMGT.
+#' @param characteristics is a data set "data(Klassen)" in this package
+#' @return Output is the plot of average frequency of nucleotide mutations resulting in amino acid substitution. The classes are divided according to IMGT.
 #' @references Pommie C., Levadoux S., Sabatier R., Lefranc G., and Lefranc MP. IMGT standardizedcriteria for statistical analysis of immunoglobulin V-REGION amino acid properties.J MolRecognit, 17(1):17-32, 2004.
-#' @examples ## data(IMGTtab7)
+#' @examples data(IMGTtab7)
 #' Regions<-cbind(IMGTtab7$FR1_IMGT,IMGTtab7$CDR1_IMGT)
-#' \dontrun{allRegions_matrix<-aa_dist(Regions)}
-#' ## data(Klassen)
-#' \dontrun{aa_plot(allRegions_matrix, "Amino acid Distribution", "right", Klassen)}
+#' allRegions_matrix<-aa_dist(Regions)
+#' data(Klassen)
+#' aa_plot(allRegions_matrix, "Amino acid Distribution", "right", Klassen)
 #' @export
 #' @importFrom reshape2 melt
 #' @import ggplot2 utils
@@ -117,7 +119,7 @@ aa_plot<-function(data, text, legend.position, characteristics){
     zp1 <- ggplot(longData, aes(x = longData$Var2, y = longData$Var1)) + geom_tile(aes(fill = factor(longData$value)),
                                                              colour = "black")
     zp1 <- zp1 +   scale_fill_manual(values = color_palette,
-                                     name = "(Average \n mutation frequency")
+                                     name = "Average \n mutation frequency")
 
 
     zp1 <- zp1 + geom_point(aes(shape = factor(longData$Klassen)))

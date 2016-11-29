@@ -9,8 +9,7 @@
 data(Klassen)
 }
 \description{
-A dataset for usage of Funktion aa_plotgg_skal()
- Klassen. The variables are as follows:
+A dataset for usage of Funktion aa_plot()
 }
 \details{
 \itemize{

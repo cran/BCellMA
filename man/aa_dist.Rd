@@ -2,7 +2,7 @@
 % Please edit documentation in R/aa_dist.R
 \name{aa_dist}
 \alias{aa_dist}
-\title{Average mutation frequency of nucleotide mutations resulting in amino acid substitution in FRs and CDRs}
+\title{Average frequency of nucleotide mutations resulting in amino acid substitution in FRs and CDRs}
 \usage{
 aa_dist(data)
 }
@@ -10,16 +10,16 @@ aa_dist(data)
 \item{data}{CDRs and FRs colums from IMGT/HighV-Quest table 7 coled "7_V-REGION-mutation-and-AA-change-table.txt"}
 }
 \value{
-Output is the data matrix of Average mutation frequency of nucleotide mutations resulting in amino acid substitution.
+Output is the data matrix of average mutation frequency of nucleotide mutations resulting in amino acid substitution.
 }
 \description{
-Average mutation frequency of nucleotide mutations resulting in amino acid substitution in FRs and CDRs
+Calculate average frequency of nucleotide mutations resulting in amino acid substitution in CDRs and/or in FRs.
 }
 \examples{
-## data(IMGTtab7)
-Regions<-cbind(IMGTtab7$FR1_IMGT,IMGTtab7$CDR1_IMGT)
-\dontrun{Regions_matrix<-aa_dist(data=Regions)}
-\dontrun{Regions_matrix}
+data(IMGTtab7)
+Regions<-cbind(IMGTtab7$FR1_IMGT,IMGTtab7$CDR1_IMGT, IMGTtab7$FR2_IMGT)
+Regions_matrix<-aa_dist(data=Regions)
+
 }
 \references{
 Zuckerman NS., Hazanov H., Barak M., Edelman H., Hess S., Shcolnik H., Dunn-Walters D.,and Mehr R. Somatic hypermutation and antigen-driven selection of B cells are altered inautoimmune diseases.J Autoimmun, 35(4):325 - 335, 2010. doi: 10.1016/j.jaut.2010.07.004.

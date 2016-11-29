@@ -24,7 +24,7 @@ trans_transv_anzahl number of transition and transversion in V region.
 Calculate nucleotide (A, T, C and G) mutations, transition, transversion and their frequency.
 }
 \examples{
-## data(IMGTtab8)
+data(IMGTtab8)
 bm_proband<- nucleotide_mutation(IMGTtab8[,11:22])
 percentlabels<- round(bm_proband$vregion_nt_mut/sum(bm_proband$vregion_nt_mut)*100)
 pielabels<- paste(percentlabels, "\%", sep="")

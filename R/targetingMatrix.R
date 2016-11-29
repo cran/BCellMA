@@ -1,15 +1,16 @@
-#'Function to the calculation of the number of Nucleotids at six positions
+#'Function to the calculation of the number of Nucleotids at three positions before and after a mutation
 #'
 #'@param data_tab2 Column V_Region in th IMGT table 2
 #'@param data_tab_germline Output from function germlineReconstr()
 #'@param data_tab7 Column V_Region in th IMGT table 7
 #'
-#'@return Result is a list of 8 matrices with the numbers of nucleotides at six positions to a mutation from A, T, C, and G, as well as in a mutated sequence and in the germline sequence
+#'@return Result is a list of 8 matrices with the numbers of nucleotides at three positions before and after a mutation from A, T, C, and G, as well as in a mutated sequence and in the germline sequence
 #'
 #'@references Spencer J. and Dunn-Walters DK.  Hypermutation at A-T base pairs: the A nucleotidereplacement spectrum is affected by adjacent nucleotides and there is no reverse comple-mentary of sequences flanking muated A and T nucleotides.J Immunol, 175(8):5170 - 5177,2005.
 #'@references Zuckerman NS., Hazanov H., Barak M., Edelman H., Hess S., Shcolnik H., Dunn-Walters D.,and Mehr R. Somatic hypermutation and antigen-driven selection of B cells are altered inautoimmune diseases.J Autoimmun, 35(4):325 - 335, 2010. doi: 10.1016/j.jaut.2010.07.004.
 #'
-#'@examples ## data(IMGTtab2) data(IMGTtab7)
+#'@examples data(IMGTtab2)
+#' data(IMGTtab7)
 #' germline<-germlineReconstr(IMGTtab2$V_REGION, IMGTtab7$V_REGION)
 #' data<-targetingMatrix(data_tab2=IMGTtab2, data_tab_germline=germline, data_tab7=IMGTtab7)
 #' data

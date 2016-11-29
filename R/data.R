@@ -1,7 +1,6 @@
 #' IMGT Table 2
 #'
-#' A dataset containing the output from IMGT/HighV-QUEST
-#'  IMGT Table 2. The variables are as follows:
+#' Data from the Excel file 2 are named IMGT-gapped-nt-sequences and are included in IMGTtab2
 #'
 #' \itemize{
 #'   \item Sequence_number. number of Sequence
@@ -35,8 +34,7 @@
 
 #' IMGT Table 7
 #'
-#'  A dataset containing the output from IMGT/HighV-QUEST
-#'  IMGT Table 7. The variables are as follows:
+#'  Data from the Excel file 7 are called the V-REGION-mutation-table and are included in IMGTtab7.
 #'
 #' \itemize{
 #'   \item Sequence_number. number of Sequence
@@ -64,8 +62,7 @@
 
 #' IMGT Table 8
 #'
-#'  A dataset containing the output from IMGT/HighV-QUEST
-#'  IMGT Table 8. The variables are as follows:
+#'  Data from the Excel file 8 are called the V-REGION-nt-mutation-statistics and are included in IMGTtab8.
 #'
 #' \itemize{
 #'   \item Sequence_number. number of Sequence
@@ -84,8 +81,7 @@
 
 #' Klassen
 #'
-#'  A dataset for usage of Funktion aa_plotgg_skal()
-#'  Klassen. The variables are as follows:
+#'  A dataset for usage of Funktion aa_plot()
 #'
 #' \itemize{
 #'   \item Egenschaften. Physio-chemical properties of aminoacids

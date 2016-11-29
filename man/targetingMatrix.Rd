@@ -2,7 +2,7 @@
 % Please edit documentation in R/targetingMatrix.R
 \name{targetingMatrix}
 \alias{targetingMatrix}
-\title{Function to the calculation of the number of Nucleotids at six positions}
+\title{Function to the calculation of the number of Nucleotids at three positions before and after a mutation}
 \usage{
 targetingMatrix(data_tab2, data_tab_germline, data_tab7)
 }
@@ -14,13 +14,14 @@ targetingMatrix(data_tab2, data_tab_germline, data_tab7)
 \item{data_tab7}{Column V_Region in th IMGT table 7}
 }
 \value{
-Result is a list of 8 matrices with the numbers of nucleotides at six positions to a mutation from A, T, C, and G, as well as in a mutated sequence and in the germline sequence
+Result is a list of 8 matrices with the numbers of nucleotides at three positions before and after a mutation from A, T, C, and G, as well as in a mutated sequence and in the germline sequence
 }
 \description{
-Function to the calculation of the number of Nucleotids at six positions
+Function to the calculation of the number of Nucleotids at three positions before and after a mutation
 }
 \examples{
-## data(IMGTtab2) data(IMGTtab7)
+data(IMGTtab2)
+data(IMGTtab7)
 germline<-germlineReconstr(IMGTtab2$V_REGION, IMGTtab7$V_REGION)
 data<-targetingMatrix(data_tab2=IMGTtab2, data_tab_germline=germline, data_tab7=IMGTtab7)
 data

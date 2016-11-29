@@ -7,7 +7,8 @@
 #' @return transition_rel the frequencies of transition.
 #' @return transverion_rel the frequencies of transversion.
 #' @return trans_transv_anzahl number of transition and transversion in V region.
-#' @examples ## data(IMGTtab8)
+#' @examples
+#' data(IMGTtab8)
 #' bm_proband<- nucleotide_mutation(IMGTtab8[,11:22])
 #' percentlabels<- round(bm_proband$vregion_nt_mut/sum(bm_proband$vregion_nt_mut)*100)
 #' pielabels<- paste(percentlabels, "%", sep="")

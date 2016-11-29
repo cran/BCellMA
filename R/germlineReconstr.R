@@ -6,7 +6,8 @@
 #'@return output is a vector of germline sequencies.
 #'
 #' @references Brochet X., Lefranc MP., and Giudicelli V. IMGT/V-QUEST: the highly customized andintegrated system for IG and TR standardized V-Jand V-D-J sequence analysis.NucleicAcids Res., 36(Web Server issue):W503 - W508, 2008. doi: 10.1093/nar/gkn316
-#' @examples ## data(IMGTtab2) data(IMGTtab7)
+#' @examples data(IMGTtab2)
+#' data(IMGTtab7)
 #' germline<-germlineReconstr(IMGTtab2$V_REGION, IMGTtab7$V_REGION)
 #' germline
 #'@export

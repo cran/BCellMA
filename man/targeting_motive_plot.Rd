@@ -2,7 +2,7 @@
 % Please edit documentation in R/targeting_motive_plot.R
 \name{targeting_motive_plot}
 \alias{targeting_motive_plot}
-\title{Polt of the procentual difference at 6 positions to a nucleotide mutation to identify the hotspot motifs.}
+\title{Polt of the difference at three positions before and after a mutation to identify the hotspot motifs.}
 \usage{
 targeting_motive_plot(pwm, xaxis = TRUE, yaxis = TRUE, xfontsize = 15,
   yfontsize = 15, xlim)
@@ -21,16 +21,17 @@ targeting_motive_plot(pwm, xaxis = TRUE, yaxis = TRUE, xfontsize = 15,
 \item{xlim}{Limit of the drowed Y-axis.}
 }
 \value{
-Output is plot the sequence logos around to mutation.
+Output is plot the sequence logos around the mutation.
 }
 \description{
-Polt of the procentual difference at 6 positions to a nucleotide mutation to identify the hotspot motifs.
+The the difference (%) at three positions before and after a mutation can be plotted using the function targeting_motive_plot().
 }
 \note{
 The Function are based on functions from package segLogo.
 }
 \examples{
-##data(IMGTtab2) data(IMGTtab7)
+data(IMGTtab2)
+data(IMGTtab7)
 germline<-germlineReconstr(IMGTtab2$V_REGION, IMGTtab7$V_REGION)
 data<-targetingMatrix(data_tab2=IMGTtab2, data_tab_germline=germline, data_tab7=IMGTtab7)
 targeting_motiv_data<-targeting_motiv(data)

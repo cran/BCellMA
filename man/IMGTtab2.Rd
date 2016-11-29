@@ -9,8 +9,7 @@
 data(IMGTtab2)
 }
 \description{
-A dataset containing the output from IMGT/HighV-QUEST
- IMGT Table 2. The variables are as follows:
+Data from the Excel file 2 are named IMGT-gapped-nt-sequences and are included in IMGTtab2
 }
 \details{
 \itemize{

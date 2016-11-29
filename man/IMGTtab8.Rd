@@ -9,8 +9,7 @@
 data(IMGTtab8)
 }
 \description{
-A dataset containing the output from IMGT/HighV-QUEST
- IMGT Table 8. The variables are as follows:
+Data from the Excel file 8 are called the V-REGION-nt-mutation-statistics and are included in IMGTtab8.
 }
 \details{
 \itemize{

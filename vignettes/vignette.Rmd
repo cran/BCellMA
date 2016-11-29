@@ -1,0 +1,200 @@
+---
+title: "BCellMA: B Cell Receptor Somatic Hyper Mutation Analysis"
+author: "Olena Ohlei"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+## Introduction
+
+
+The BCellMA package includes a set of functions to analyze for instance nucleotide frequencies as well as transition and  transversion. BCellMA can reconstruct germline sequences based on IMGT outputs, calculate and plot the difference (%) of nucleotides at 6 positions around a mutation to identify and characterize hotspot motifs as well as calculate and plot average mutation frequencies of nucleotide mutations resulting in amino acid substitution.
+
+
+
+```{r, fig.show='hold'}
+# Load required packages
+library("BCellMA")
+```
+
+## Example data
+
+An Ig gene database example using IMGT/HighV-QUEST is included in the BCellMA package. 
+
+The Ig sequences were taken from the following publication: 
+
+> Mueller A. Christoph Brieske C. Schinke S. Csernok E. Gross WL. Hasselbacher K. Voswinkel J. and Holl-Ulrich K. Plasma cells within granulomatous inflammation display signs pointing to autoreactivity and destruction in granulomatosis with polyangiitis. Arthritis Res Ther 16(1):R55, 2014.
+
+IMGT/HighV-QUEST reference:
+
+> Brochet X. Lefranc MP. and Giudicelli V. IMGT/V-QUEST: the highly customized andintegrated system for IG and TR standardized V-Jand V-D-J sequence analysis.NucleicAcids Res., 36(Web Server issue):W503–W508, 2008. doi: 10.1093/nar/gkn316.
+
+Data from the Excel file 2 are named “IMGT-gapped-nt-sequences” and are included in IMGTtab2. Data from the Excel file 7 are called “The V-REGION-mutation-table” and are included in IMGTtab7. Data from the Excel file 8 are called “The V-REGION-nt-mutation-statistics” and are included in IMGTtab8.
+
+```{r, echo=TRUE, results='asis'}
+# Subset example data
+data("IMGTtab2")
+data("IMGTtab7")
+data("IMGTtab8")
+```
+
+
+## Functions to analyze nucleotide frequencies as well as transition and transversion mutations
+
+The function `nucleotide_mutation()` can be used to calculate the number of nucleotide mutations, transitions and transversions. Nucleotide mutation can be plotted as a pie plot. Transition and transversion mutations can be plotted as a bar plot. For more information see `?nucleotide_mutation`.
+
+```{r, echo=TRUE, results='asis', fig.height=4, fig.width=6}
+
+bm_proband<- nucleotide_mutation(IMGTtab8[,11:22])
+
+```
+
+## Calculation and plotting of hotspot motifs
+
+For the calculation of hotspot motifs the germline genes are required. `GermlineReconstr()` is a function that reconstructs germline gene sequences based on IMGT outputs.
+
+```{r, echo=TRUE, results='markup'}
+
+germline<-germlineReconstr(IMGTtab2$V_REGION, IMGTtab7$V_REGION)
+
+```
+
+The function `na_funktion()` checks for reconstruction errors in the Ig sequences. It controls for the presence of missing values (“NA”) in a sequence by counting NAs. If the answer is null, then there are no errors in the germline reconstruction. If the answer is different from null, the mutated Ig sequence must be checked manually.
+
+```{r, echo=TRUE }
+
+na_funktion(germline)
+
+```
+
+Calculation of the total nucleotide number three positions before and after a mutation with the function `hotspotmutMatrix()`.
+
+```{r, echo=TRUE, results='markup'}
+data<-targetingMatrix(data_tab2=IMGTtab2, data_tab_germline=germline, data_tab7=IMGTtab7)
+
+data$mutzur_A
+```
+
+
+A target motif describes a short DNA motif in which mutations are preferentially inserted. The change around the mutated nucleotide flanking three bases each is expressed as the difference (%) between the substitution frequency in the mutated sequence and the substitution frequency in the germline sequence with the function `targeting_motiv()`. 
+The substitution frequency in the mutated sequence is calculated as: $$SFM_{B}^{i}= \frac{n_{B}^{i}}{ n_{A}^{i} + n_{T}^{i} + n_{C}^{i} +n_{G}^{x_i}}.$$
+The substitution frequency in the germline sequence is calculated as: $$SFG_{B}^{i}= \frac{n_{B}^{i}}{ n_{A}^{i} + n_{T}^{i} + n_{C}^{i} +n_{G}^{i}},$$
+
+$n_{B}^{i}$ is the number of nucleotides $B=\{A, T, C, G\}$ at the position $i= \{-3, -2, -1, 1, 2, 3\}$.
+
+Reference:
+
+> Spencer J. and Dunn-Walters DK.  Hypermutation at A-T base pairs: the A nucleotidereplacement spectrum is affected by adjacent nucleotides and there is no reverse comple-mentary of sequences flanking muated A and T nucleotides.J Immunol, 175(8):5170 - 5177,2005.
+
+> Zuckerman NS., Hazanov H., Barak M., Edelman H., Hess S., Shcolnik H., Dunn-Walters D.,and Mehr R. Somatic hypermutation and antigen-driven selection of B cells are altered inautoimmune diseases.J Autoimmun, 35(4):325 - 335, 2010. doi: 10.1016/j.jaut.2010.07.004.
+
+```{r, echo=TRUE, results='markup'}
+targeting_motiv_data<-targeting_motiv(data)
+
+targeting_motiv_data$A
+```
+
+The target motifs can be plotted using the function `targeting_motive_plot()`.
+
+```{r, echo=TRUE, results = 'axis', fig.width=6, fig.height=5}
+
+targeting_motive_plot(targeting_motiv_data$A, xfontsize = 15, yfontsize = 15, xlim=60 )
+
+grid.text("P1 prod. IGHV: A -> N.", x=0.55, y=unit(20,"lines"),
+          gp=gpar(fontsize=14))
+```
+
+## Calculating and plotting of average mutation frequencies of nucleotide mutations resulting in amino acid substitution
+
+The average amino acid mutation frequency in all regions can be calculated with the function `aa_dist()`. The average mutation frequency leading to an amino acid exchange is calculated as: $$F_{l}(AA_i > AA_j) = \frac{1}{n} \sum_{k=0}^n \frac{M_{l,k}( AA_i > AA_j )}{ \sum_{l=0}^{380} M_{l,k} (AA_i > AA_j )}, i\neq j, 1= 1, 2, ..., 20, j= 1, 2, ..., 19.$$.
+
+In a group all Ig sequences $k$ = 1, 2, ..., n are considered. $M_{l,k}$ is determined as the number of the specific amino acid exchanges $l$ = 1, 2, ..., 380 in the Ig sequence $k$ from one of the 20 amino acids $i$ to another amino acid $j$. This specific amino acid exchange number is divided by the sum of all amino acid exchanges $M_{l,k} (AA_i > AA_j )$ in the $k$-th Ig sequence to obtain relative amino acid exchange value. The average amino acid mutation frequency results from an average value of the relative amino acid exchange values over all $n$ Ig sequences. 
+
+```{r, echo=TRUE, results='markup'}
+
+Regions<-cbind(IMGTtab7$FR1_IMGT,
+               IMGTtab7$CDR1_IMGT,
+               IMGTtab7$FR2_IMGT,
+               IMGTtab7$CDR2_IMGT,
+               IMGTtab7$FR3_IMGT,
+               IMGTtab7$CDR3_IMGT)
+Regions_matrix<-aa_dist(data=Regions)
+Regions_matrix[1:3,1:17]
+
+```
+
+The average mutation frequency leading to an amino acid exchange can be plotted as an `aa_plot()`.  IMGT/HighV-QUEST classifies amino acid exchanges into four classes according to the change in chemical properties, hydropathy and volume. In the BCellMA package these classes are given by “data Klassen”.
+
+
+```{r , echo=T, results='hide', warning=FALSE, fig.height=4, fig.keep='none'}
+
+data(Klassen)
+p1<-aa_plot(Regions_matrix, "Amino acid Distribution", "right", Klassen)
+```
+
+
+
+```{r, echo=F, results='hold', warning=FALSE, fig.width=6, fig.height=4}
+
+p1
+
+```
+
+The average mutation frequency leading to an amino acid exchange can be computed for CDRs only and/or for FRs only. An example is shown below. 
+
+```{r,echo=TRUE, warning=FALSE, fig.height=6}
+
+CDRs<-cbind(IMGTtab7$CDR1_IMGT,
+               IMGTtab7$CDR2_IMGT,
+               IMGTtab7$CDR3_IMGT)
+CDRs_matrix<-aa_dist(data=Regions)
+
+```
+
+
+```{r , echo=T, results='hide', warning=FALSE, fig.width=6, fig.keep='none'}
+
+
+p2<-aa_plot(CDRs_matrix, "Amino acid Distribution", "right", Klassen)
+
+```
+
+```{r, echo=F, results='hold', warning=FALSE, fig.width=6, fig.height=4}
+
+p2
+
+```
+
+
+## Calculating and plotting of average mutation frequencies of nucleotide mutations resulting in amino acid substitution in the CDR3
+
+The average mutation frequency leading to amino acid exchanges in the CDR3 can be calculated with the function `aa_cdr3_dist()`.
+
+```{r , echo=TRUE, warning=FALSE, fig.height=4}
+
+cdr3_matrix<-aa_cdr3_dist(data=IMGTtab7$CDR3_IMGT)
+
+```
+
+```{r , echo=T, results='hide', warning=FALSE, fig.height=6, fig.keep='none'}
+
+
+p3<-aa_plot(cdr3_matrix, "Amino acid Distribution", "right", Klassen)
+
+```
+
+```{r, echo=F, results='hold', warning=FALSE, fig.width=6, fig.height=4}
+
+p3
+
+```
+
+
+
+
+
+
+

@@ -1,3 +1,15 @@
+#' The function to check for reconsrtruction errors
+#'
+#'
+#' @param data from function germlineReconstr().
+#' @return total number of NAs. If the answer is null then there are no errors in the germline reconstruction.
+#'
+#' @examples
+#' germline<-germlineReconstr(IMGTtab2$V_REGION, IMGTtab7$V_REGION)
+#' na_funktion(germline)
+#'
+#' @export
+#'
 na_funktion<-function(data){
 
   # data - Ergebnisse der germlineReconstr()

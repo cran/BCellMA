@@ -1,14 +1,15 @@
-#' Average mutation frequency of nucleotide mutations resulting in amino acid substitution in FRs and CDRs
+#' Average frequency of nucleotide mutations resulting in amino acid substitution in FRs and CDRs
 #'
+#' Calculate average frequency of nucleotide mutations resulting in amino acid substitution in CDRs and/or in FRs.
 #' @param data CDRs and FRs colums from IMGT/HighV-Quest table 7 coled "7_V-REGION-mutation-and-AA-change-table.txt"
 #'
-#' @return Output is the data matrix of Average mutation frequency of nucleotide mutations resulting in amino acid substitution.
+#' @return Output is the data matrix of average mutation frequency of nucleotide mutations resulting in amino acid substitution.
 #'
 #' @references Zuckerman NS., Hazanov H., Barak M., Edelman H., Hess S., Shcolnik H., Dunn-Walters D.,and Mehr R. Somatic hypermutation and antigen-driven selection of B cells are altered inautoimmune diseases.J Autoimmun, 35(4):325 - 335, 2010. doi: 10.1016/j.jaut.2010.07.004.
-#' @examples ## data(IMGTtab7)
-#' Regions<-cbind(IMGTtab7$FR1_IMGT,IMGTtab7$CDR1_IMGT)
-#' \dontrun{Regions_matrix<-aa_dist(data=Regions)}
-#' \dontrun{Regions_matrix}
+#' @examples data(IMGTtab7)
+#' Regions<-cbind(IMGTtab7$FR1_IMGT,IMGTtab7$CDR1_IMGT, IMGTtab7$FR2_IMGT)
+#' Regions_matrix<-aa_dist(data=Regions)
+#'
 #' @export
 #'
 aa_dist<-function(data){
@@ -16,10 +17,10 @@ aa_dist<-function(data){
   # data      - Daten aus der IMGT-Tabelle 7, die CDRs und FRs
   # Ergebnis  - Durchschnittliche Haeufigkeit der Aminosaeurenaustausche
   #
-
-  data[,1]<-ifelse(data[,1]=="", NA, data[,1])
-  data[,2]<-ifelse(data[,2]=="", NA, data[,2])
-  matrix_neu<-matrix(rep(0, 20*20), ncol=20, byrow=20)
+for(i in 1:length(data[1,])){
+  data[,i]<-ifelse(data[,i]=="", NA, data[,i])
+}
+    matrix_neu<-matrix(rep(0, 20*20), ncol=20, byrow=20)
 
   for(i in 1:length(data[,1])){
 

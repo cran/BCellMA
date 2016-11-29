@@ -1,14 +1,14 @@
-#' Average mutation frequency of nucleotide mutations resulting in amino acid substitution in CDR3
+#' Average frequency of nucleotide mutations resulting in amino acid substitution in CDR3
 #'
-#' Calculate Average mutation frequency of nucleotide mutations resulting in amino acid substitution.
-#' @param data A column CDR3_IMGT from IMGT/HighV-Quest table 7 coled "7_V-REGION-mutation-and-AA-change-table.txt"
+#' Calculate average frequency of nucleotide mutations resulting in amino acid substitution in CDR3.
+#' @param data A column CDR3_IMGT from IMGT/HighV-Quest table 7 called "7_V-REGION-mutation-and-AA-change-table.txt"
 #'
-#' @return Output is the data matrix of Average mutation frequency of nucleotide mutations resulting in amino acid substitution.
+#' @return Output is the data matrix of average frequency of nucleotide mutations resulting in amino acid substitution.
 #'
 #' @references Zuckerman NS., Hazanov H., Barak M., Edelman H., Hess S., Shcolnik H., Dunn-Walters D.,and Mehr R. Somatic hypermutation and antigen-driven selection of B cells are altered inautoimmune diseases.J Autoimmun, 35(4):325 - 335, 2010. doi: 10.1016/j.jaut.2010.07.004.
-#' @examples ## data(IMGTtab7)
+#' @examples data(IMGTtab7)
 #' cdr3_matrix<-aa_cdr3_dist(data=IMGTtab7$CDR3_IMGT)
-#' cdr3_matrix
+#'
 #' @export
 #'
 #'

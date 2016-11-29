@@ -1,5 +1,6 @@
-#' Polt of the procentual difference at 6 positions to a nucleotide mutation to identify the hotspot motifs.
+#' Polt of the difference at three positions before and after a mutation to identify the hotspot motifs.
 #'
+#' The the difference (%) at three positions before and after a mutation can be plotted using the function targeting_motive_plot().
 #'@param pwm Result of the function hotspot().
 #'@param xaxis Accept TRUE/FALSE parameter. TRUE draw X-axis.
 #'@param yaxis Accept TRUE/FALSE parameter. TRUE draw Y-axis.
@@ -9,14 +10,15 @@
 #'
 #'@note The Function are based on functions from package segLogo.
 #'
-#'@return Output is plot the sequence logos around to mutation.
+#'@return Output is plot the sequence logos around the mutation.
 #'
 #'@references Spencer J. and Dunn-Walters DK.  Hypermutation at A-T base pairs: the A nucleotidereplacement spectrum is affected by adjacent nucleotides and there is no reverse comple-mentary of sequences flanking muated A and T nucleotides.J Immunol, 175(8):5170 - 5177,2005.
 #'@references Zuckerman NS., Hazanov H., Barak M., Edelman H., Hess S., Shcolnik H., Dunn-Walters D.,and Mehr R. Somatic hypermutation and antigen-driven selection of B cells are altered inautoimmune diseases.J Autoimmun, 35(4):325 - 335, 2010. doi: 10.1016/j.jaut.2010.07.004.
 #' @references Bembom O. seqLogo: Sequence logos for DNA sequence alignments, Status 10.08.2016. URLhttp://www.bioconductor.org/packages/release/bioc/html/seqLogo.html.
 #' @references Schneider TD. and Stephens RM. Sequence logos: a new way to display consensus sequences.Nucleic Acids Res, 18(20):6097 - 6100, 1990.
 #'
-#' @examples ##data(IMGTtab2) data(IMGTtab7)
+#' @examples data(IMGTtab2)
+#' data(IMGTtab7)
 #' germline<-germlineReconstr(IMGTtab2$V_REGION, IMGTtab7$V_REGION)
 #' data<-targetingMatrix(data_tab2=IMGTtab2, data_tab_germline=germline, data_tab7=IMGTtab7)
 #' targeting_motiv_data<-targeting_motiv(data)

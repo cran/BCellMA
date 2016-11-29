@@ -2,7 +2,7 @@
 % Please edit documentation in R/targeting_motiv.R
 \name{targeting_motiv}
 \alias{targeting_motiv}
-\title{Function to calculate the procentual difference at 6 positions to a nucleotide mutation to identify the hotspot motifs}
+\title{Function to calculate the difference at three positions before and after a mutation to identify the hotspot motifs}
 \usage{
 targeting_motiv(data)
 }
@@ -10,13 +10,14 @@ targeting_motiv(data)
 \item{data}{Output from the function hotspotmutMat().}
 }
 \value{
-Output is a list of four mutation environments A, C, T and G with the percentage difference of the nucleotides A, C, T and G at six positions to a mutation.
+Output is a list of four mutation environments A, C, T and G with the difference (%) of the nucleotides A, C, T and G at three positions before and after a mutation.
 }
 \description{
-Function to calculate the procentual difference at 6 positions to a nucleotide mutation to identify the hotspot motifs
+The change around the mutated nucleotide flanking three bases each is expressed as the difference (%) between the substitution frequency in the mutated sequence and the substitution frequency in the germline sequence.
 }
 \examples{
-##data(IMGTtab2) data(IMGTtab7)
+data(IMGTtab2)
+data(IMGTtab7)
 germline<-germlineReconstr(IMGTtab2$V_REGION, IMGTtab7$V_REGION)
 data<-targetingMatrix(data_tab2=IMGTtab2, data_tab_germline=germline, data_tab7=IMGTtab7)
 targeting_motiv_data<-targeting_motiv(data)

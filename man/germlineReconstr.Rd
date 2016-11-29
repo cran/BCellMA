@@ -18,7 +18,8 @@ output is a vector of germline sequencies.
 Function to reconstruction of germline sequencies based on IMGT outputs.
 }
 \examples{
-## data(IMGTtab2) data(IMGTtab7)
+data(IMGTtab2)
+data(IMGTtab7)
 germline<-germlineReconstr(IMGTtab2$V_REGION, IMGTtab7$V_REGION)
 germline
 }

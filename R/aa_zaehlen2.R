@@ -10,15 +10,16 @@ aa_zaehlen2<- function(data){
 
   asc <- function(x) { strtoi(charToRaw(x),16L) }
   chr <- function(n) { rawToChar(as.raw(n)) }
+
   matrix_neu<-matrix(rep(0, 26*26), ncol=26, byrow=26)
 
+  for(i in 1:length(data)){
 
-  if (length(data)>1){
+    if (is.na(data[i])==FALSE){
 
 
-    temp2<- strsplit(data," |,|[|]|[()]|/ " )
+    temp2<- strsplit(data[i]," |,|[|]|[()]|/ " )
     temp3<-matrix(unlist(temp2), ncol=1, byrow=TRUE)
-    temp3<-ifelse(temp3=="", NA, temp3)
 
     for (i in 1:length(temp3)){
 
@@ -44,6 +45,10 @@ aa_zaehlen2<- function(data){
       }
 
     }
+
+
+  }
+  }
     matrix_neu <- matrix_neu[ ,c(4,5,11,8,18,7,14,17,1,19,20,
                                  16,3,22,13,25,9,12,6,23)]
     matrix_neu <- matrix_neu[ c(23,6,12,9,25,13,22,3,16,20,19,
@@ -53,9 +58,6 @@ aa_zaehlen2<- function(data){
     rownames(matrix_neu)<-c("W", "F", "L", "I", "Y", "M", "V", "C", "P", "T",
                             "S", "A", "Q", "N", "G", "R", "H", "K", "E", "D")
 
-  }
-  else{
-    matrix_neu<-matrix(rep(0, 20*20), ncol=20, byrow=2)
-  }
   return(matrix_neu)
 }
+
