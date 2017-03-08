@@ -4,6 +4,7 @@ library("BCellMA")
 
 ## ---- echo=TRUE, results='asis'------------------------------------------
 # Subset example data
+data("IMGTtab1")
 data("IMGTtab2")
 data("IMGTtab7")
 data("IMGTtab8")
@@ -35,9 +36,9 @@ targeting_motiv_data$A
 
 ## ---- echo=TRUE, results = 'axis', fig.width=6, fig.height=5-------------
 
-targeting_motive_plot(targeting_motiv_data$A, xfontsize = 15, yfontsize = 15, xlim=60 )
+targeting_motive_plot(targeting_motiv_data$A, xfontsize = 15, yfontsize = 15, xlim=20 )
 
-grid.text("P1 prod. IGHV: A -> N.", x=0.55, y=unit(20,"lines"),
+grid.text("func. IGHV: A -> N.", x=0.55, y=unit(20,"lines"),
           gp=gpar(fontsize=14))
 
 ## ---- echo=TRUE, results='markup'----------------------------------------
@@ -96,4 +97,20 @@ p3<-aa_plot(cdr3_matrix, "Amino acid Distribution", "right", Klassen)
 
 p3
 
+
+## ---- echo=TRUE, warning=FALSE, fig.height=4-----------------------------
+
+gane_comb<-gene_comb_funk(family1 = IMGTtab1$V_GENE_and_allele,
+                          family2 = IMGTtab1$J_GENE_and_allele)
+gane_comb
+
+
+## ---- echo=TRUE, warning=FALSE, fig.width=6, fig.height=4----------------
+
+gene_comb_plot(gane_comb, "IGHV and IGHJ ratio", legend_position = "right", a = 35, b = 0.5)
+
+## ---- echo=TRUE, warning=FALSE, fig.width=6, fig.height=4----------------
+
+lenght_tab<-lengthCDR3(as.numeric(IMGTtab1$CDR3_IMGT_length))
+lenght_tab
 

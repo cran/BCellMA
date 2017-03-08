@@ -1,3 +1,24 @@
+#' IMGT Table 1
+#'
+#' Data from the Excel file 1 are named Summary and are included in IMGTtab1
+#'
+#' \itemize{
+#'   \item Sequence_number. number of Sequence
+#'   \item Sequence_ID. ID frome gene bank
+#'   \item Functionality. productive/unproductive
+#'   \item V_GENE_and_allele. germline genes of V Region
+#'   \item J_GENE_and_allele. germline genes of J Region
+#'   \item D_GENE_and_allele. germline genes of D Region
+#'   }
+#'
+#' @docType data
+#' @keywords datasets
+#' @name IMGTtab1
+#' @usage data(IMGTtab1)
+#' @format A data frame with 9 rows and 29 variables
+#'
+"IMGTtab1"
+
 #' IMGT Table 2
 #'
 #' Data from the Excel file 2 are named IMGT-gapped-nt-sequences and are included in IMGTtab2

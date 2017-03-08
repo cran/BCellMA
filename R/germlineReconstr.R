@@ -21,7 +21,7 @@ germlineReconstr<- function(data_tab2, data_tab7){
 
   # zuerst wird eine Matrix bestehend aus Nullen erzeugt
   vector_germline<-matrix(rep(0, 1*length(data_tab2)), ncol=1, byrow=2)
-  data_tab7<-ifelse(data_tab7 =="", NA, data_tab7)
+  data_tab7<-ifelse(data_tab7 =="", 1, data_tab7)
 
 
   # Konvertierung von Buchstaben in Ascii Werte a=97 z=122

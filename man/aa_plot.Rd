@@ -31,4 +31,3 @@ aa_plot(allRegions_matrix, "Amino acid Distribution", "right", Klassen)
 \references{
 Pommie C., Levadoux S., Sabatier R., Lefranc G., and Lefranc MP. IMGT standardizedcriteria for statistical analysis of immunoglobulin V-REGION amino acid properties.J MolRecognit, 17(1):17-32, 2004.
 }
-

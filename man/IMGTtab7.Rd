@@ -27,4 +27,3 @@ Data from the Excel file 7 are called the V-REGION-mutation-table and are includ
   }
 }
 \keyword{datasets}
-

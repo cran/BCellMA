@@ -18,4 +18,3 @@ A dataset for usage of Funktion aa_plot()
   }
 }
 \keyword{datasets}
-

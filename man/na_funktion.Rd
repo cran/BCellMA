@@ -20,4 +20,3 @@ germline<-germlineReconstr(IMGTtab2$V_REGION, IMGTtab7$V_REGION)
 na_funktion(germline)
 
 }
-

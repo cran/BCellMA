@@ -45,7 +45,7 @@ targeting_motive_plot <- function (pwm , xaxis = TRUE, yaxis = TRUE, xfontsize =
   letters <- list(x = NULL, y = NULL, id = NULL, fill = NULL)
   npos <- ncol(pwm_pos)
 
-  ylab <- "% difference"
+  ylab <- "% d"
   facs <- rep(1, npos)
 
   wt <- 1

@@ -119,16 +119,17 @@ aa_plot<-function(data, text, legend.position, characteristics){
     zp1 <- ggplot(longData, aes(x = longData$Var2, y = longData$Var1)) + geom_tile(aes(fill = factor(longData$value)),
                                                              colour = "black")
     zp1 <- zp1 +   scale_fill_manual(values = color_palette,
-                                     name = "Average \n mutation frequency")
+                                     name = "Average \n mutation frequency",
+                                     na.value=NA)
 
 
     zp1 <- zp1 + geom_point(aes(shape = factor(longData$Klassen)))
     zp1 <- zp1 + scale_shape_manual(name = "classes",
                                     labels = c("very similar "," similar",
-                                               "different", "very different"),
-                                    values=c("1"=3,"2"=2, "3"=0, "4"=1) )
+                                               "different", "very different", " "),
+                                    values=c("1"=3,"2"=2, "3"=0, "4"=1, "5"=NA) )
 
-    zp1 <- zp1 + scale_x_discrete(expand = c(0, 0))
+    zp1 <- zp1 + scale_x_discrete(position = "top")
     zp1 <- zp1 + scale_y_discrete(expand = c(0, 0))
     zp1 <- zp1 + coord_equal()
     zp1 <- zp1 + theme_bw()

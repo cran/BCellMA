@@ -29,8 +29,8 @@ targetingMatrix<-function(data_tab2, data_tab_germline, data_tab7){
   #Funktionsdefinition
   #Konvertierung von Buchstaben in Ascii Werte a=97 z=122
   #
-  data_tab2<-ifelse(data_tab2$V_REGION=="", NA, data_tab2$V_REGION)
-  data_tab7<-ifelse(data_tab7$V_REGION=="", NA, data_tab7$V_REGION)
+  data_tab2<-ifelse(data_tab2$V_REGION=="", 1, data_tab2$V_REGION)
+  data_tab7<-ifelse(data_tab7$V_REGION=="", 1, data_tab7$V_REGION)
 
   asc <- function(x) { strtoi(charToRaw(x),16L)}
   chr <- function(n) { rawToChar(as.raw(n)) }

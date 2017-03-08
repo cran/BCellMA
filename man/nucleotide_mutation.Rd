@@ -34,4 +34,3 @@ legend("right", c(" prod. IGHV"), cex=1.5)
 legend("topleft", c("A","G","T","C"), cex=2, fill=c("grey50","black",
                                                    "grey90","white"))
 }
-

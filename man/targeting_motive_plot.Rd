@@ -47,4 +47,3 @@ Bembom O. seqLogo: Sequence logos for DNA sequence alignments, Status 10.08.2016
 
 Schneider TD. and Stephens RM. Sequence logos: a new way to display consensus sequences.Nucleic Acids Res, 18(20):6097 - 6100, 1990.
 }
-

@@ -44,16 +44,16 @@ targeting_motiv<-function(data){
     Gg1<-matrix(rep(0, 4*6), ncol=6, byrow=4)
 
     A2<-matrix(rep(0, 4*6), ncol=6, byrow=4)
-    colnames(A2)<- c("Pos-3", "Pos-2", "Pos-1", "Pos+1", "Pos+2", "Pos+3")
+    colnames(A2)<- c("-3", "-2", "-1", "+1", "+2", "+3")
     rownames(A2)<- c("A", "C", "G", "T")
     T2<-matrix(rep(0, 4*6), ncol=6, byrow=4)
-    colnames(T2)<- c("Pos-3", "Pos-2", "Pos-1", "Pos+1", "Pos+2", "Pos+3")
+    colnames(T2)<- c("-3", "-2", "-1", "+1", "+2", "+3")
     rownames(T2)<- c("A", "C", "G", "T")
     C2<-matrix(rep(0, 4*6), ncol=6, byrow=4)
-    colnames(C2)<- c("Pos-3", "Pos-2", "Pos-1", "Pos+1", "Pos+2", "Pos+3")
+    colnames(C2)<- c("-3", "-2", "-1", "+1", "+2", "+3")
     rownames(C2)<- c("A", "C", "G", "T")
     G2<-matrix(rep(0, 4*6), ncol=6, byrow=4)
-    colnames(G2)<- c("Pos-3", "Pos-2", "Pos-1", "Pos+1", "Pos+2", "Pos+3")
+    colnames(G2)<- c("-3", "-2", "-1", "+1", "+2", "+3")
     rownames(G2)<- c("A", "C", "G", "T")
 
 
@@ -89,16 +89,16 @@ targeting_motiv<-function(data){
       for(i in 1:4){
         if(Ag1[i,n]==0){
           A2[i,n]=A1[i,n]*100
-        }else{A2[i,n]=((A1[i,n]-Ag1[i,n])/Ag1[i,n])*100}
+        }else{A2[i,n]=(A1[i,n]-Ag1[i,n])*100}
         if(Tg1[i,n]==0){
           T2[i,n]=T1[i,n]*100
-        }else{T2[i,n]=((T1[i,n]-Tg1[i,n])/Tg1[i,n])*100}
+        }else{T2[i,n]=(T1[i,n]-Tg1[i,n])*100}
         if(Cg1[i,n]==0){
           C2[i,n]=C1[i,n]*100
-        }else{C2[i,n]=((C1[i,n]-Cg1[i,n])/Cg1[i,n])*100}
+        }else{C2[i,n]=(C1[i,n]-Cg1[i,n])*100}
         if(Gg1[i,n]==0){
           G2[i,n]=G1[i,n]*100
-        }else{G2[i,n]=((G1[i,n]-Gg1[i,n])/Gg1[i,n])*100}
+        }else{G2[i,n]=(G1[i,n]-Gg1[i,n])*100}
       }
     }
 

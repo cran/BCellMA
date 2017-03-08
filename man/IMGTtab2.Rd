@@ -34,4 +34,3 @@ Data from the Excel file 2 are named IMGT-gapped-nt-sequences and are included i
   }
 }
 \keyword{datasets}
-
